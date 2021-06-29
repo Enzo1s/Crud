@@ -1,0 +1,5 @@
+package com.ejemplo.crud.producto.entity;
+
+public class Producto {
+
+}
