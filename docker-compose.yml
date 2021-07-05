@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  
+  servicio-producto:
+    image: crud-producto:latest
+    container_name: crudProducto
+    logging:
+       driver: json-file
+    volumes:
+      - ./:/app
+    depends_on:
+      - mysql
+    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/db_ventas
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: root
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DB: db_ventas
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    volumes:
+      - ventas-db:/var/liv/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_ventas
+volumes:
+  ventas-db:
